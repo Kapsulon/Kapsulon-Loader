@@ -9,4 +9,4 @@ Kapsulon.Addons = {
     "better-noclip"
 }
 
-file.Exists("", "GAME")
+--file.Exists("", "GAME")
