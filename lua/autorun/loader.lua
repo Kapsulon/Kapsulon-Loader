@@ -11,5 +11,4 @@ Kapsulon.Addons = {
 }
 
 for i in pairs(Kapsulon.Addons) do
-    print(file.Exists("addons/"..i.."lua/autorun/", path))
---file.Exists("", "GAME")
+    print(file.Exists("addons/"..i.."lua/", "GAME"))
