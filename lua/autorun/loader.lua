@@ -6,8 +6,6 @@ Kapsulon = Kapsulon or {}
 
 Kapsulon.Loader = {}
 Kapsulon.Loader.Version = 1
-Kapsulon.Loader.AutoUpdate = false
-Kapsulon.Loader.SelfUpdate = true
 
 Kapsulon.Addons = {
     "crypto-trade",
@@ -28,7 +26,7 @@ Kapsulon.kprint("Starting initialization sequence...\n")
 
 for _, i in pairs(Kapsulon.Addons) do
     if file.Exists("addons/"..i.."/manifest.json", "GAME") then
-        Kapsulon.kprint("Manifest file found for "..i.." !")
+        Kapsulon.kprintcolor(Color(0, 255, 0), "Manifest file found for "..i.." !")
 
         local manifest = util.JSONToTable(file.Read("addons/"..i.."/manifest.json", "GAME"))
 
@@ -36,7 +34,7 @@ for _, i in pairs(Kapsulon.Addons) do
         if SERVER then AddCSLuaFile( manifest.loader_file_location .. "/loader.lua" ) include( manifest.loader_file_location .. "/loader.lua" ) else include( manifest.loader_file_location .. "/loader.lua" ) end
         Kapsulon.kprint("Initialized "..i.." (Version "..manifest.addon_version..") Successfully !")
     else
-        Kapsulon.kprint("Manifest file not found for "..i.."...")
+        Kapsulon.kprintcolor(Color(255, 0, 0), "Manifest file not found for "..i.."...")
     end
 end
 
