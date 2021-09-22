@@ -31,7 +31,7 @@ for _, i in pairs(Kapsulon.Addons) do
         local manifest = util.JSONToTable(file.Read("addons/"..i.."/manifest.json", "GAME"))
 
         Kapsulon.kprint("Initializing "..i.."... (Version "..manifest.addon_version..")")
-        if SERVER then AddCSLuaFile( manifest.loader_file_location .. "/loader.lua" ) include( manifest.loader_file_location .. "/loader.lua" ) else include( manifest.loader_file_location .. "/loader.lua" ) end
+        --if SERVER then AddCSLuaFile( manifest.loader_file_location .. "/loader.lua" ) include( manifest.loader_file_location .. "/loader.lua" ) else include( manifest.loader_file_location .. "/loader.lua" ) end
         Kapsulon.kprint("Initialized "..i.." (Version "..manifest.addon_version..") Successfully !")
     else
         Kapsulon.kprintcolor(Color(255, 0, 0), "Manifest file not found for "..i.."...\n")
