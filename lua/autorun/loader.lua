@@ -23,24 +23,6 @@ function Kapsulon.kprintcolor(color, text)
     MsgC(color, "[KAPSULON] "..text)
 end
 
-if Kapsulon.Loader.SelfUpdate then
-    local updateFound = false
-    print("")
-    Kapsulon.kprint("Checking if an update is available...")
-    http.Fetch("https://raw.githubusercontent.com/Kapsulon/kapsulon-loader/main/manifest.json", function(body, length, headers, code)
-        local result = util.JSONToTable(body)
-        if result.addon_version > Kapsulon.Loader.Version then
-            updateFound = true
-        end
-    end)
-    if updateFound then
-        Kapsulon.kprintcolor(Color(255, 0, 0), "An update for the loader is available, it is strongly recommended to download it as it probably introduces compatibility changes and major bug fixes.")
-    else
-        Kapsulon.kprintcolor(Color(0, 255, 0), "No update was found.")
-    end
-end
-
-
 print("")
 Kapsulon.kprint("Starting initialization sequence...\n")
 
