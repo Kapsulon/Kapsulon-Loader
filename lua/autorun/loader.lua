@@ -15,15 +15,18 @@ Kapsulon.Addons = {
     "better-noclip"
 }
 
-function Kapsulon.kprint(text, color=nil)
-    if not color then color = Color(255, 255, 255) else end
+function Kapsulon.kprint(text)
+    print("[KAPSULON] "..text)
+end
+
+function Kapsulon.kprintcolor(color, text)
     MsgC(color, "[KAPSULON] "..text)
-    --print("[KAPSULON] "..text)
 end
 
 if Kapsulon.Loader.SelfUpdate then
     local updateFound = false
-    Kapsulon.kprint("\nChecking if an update is available...")
+    print("")
+    Kapsulon.kprint("Checking if an update is available...")
     http.Fetch("https://raw.githubusercontent.com/Kapsulon/kapsulon-loader/main/manifest.json", function(body, length, headers, code)
         local result = util.JSONToTable(body)
         if result.addon_version > Kapsulon.Loader.Version then
@@ -31,14 +34,15 @@ if Kapsulon.Loader.SelfUpdate then
         end
     end)
     if updateFound then
-        Kapsulon.kprint(Color(255, 0, 0), "An update for the loader is available, it is strongly recommended to download it as it probably introduces compatibility changes and major bug fixes.")
+        Kapsulon.kprintcolor(Color(255, 0, 0), "An update for the loader is available, it is strongly recommended to download it as it probably introduces compatibility changes and major bug fixes.")
     else
-        Kapsulon.kprint(Color(0, 255, 0), "No update was found.")
+        Kapsulon.kprintcolor(Color(0, 255, 0), "No update was found.")
     end
 end
 
 
-Kapsulon.kprint("\nStarting initialization sequence...\n")
+print("")
+Kapsulon.kprint("Starting initialization sequence...\n")
 
 for _, i in pairs(Kapsulon.Addons) do
     if file.Exists("addons/"..i.."/manifest.json", "GAME") then
@@ -54,4 +58,5 @@ for _, i in pairs(Kapsulon.Addons) do
     end
 end
 
-Kapsulon.kprint("\nInitialization sequence finished !")
+print("")
+Kapsulon.kprint("Initialization sequence finished !")
