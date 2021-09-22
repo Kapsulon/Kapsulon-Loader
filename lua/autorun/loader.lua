@@ -5,7 +5,9 @@
 Kapsulon = Kapsulon or {}
 
 Kapsulon.Loader = {}
-Kapsulon.Loader.Version = "0.1"
+Kapsulon.Loader.Version = 1
+Kapsulon.Loader.AutoUpdate = false
+Kapsulon.Loader.SelfUpdate = true
 
 Kapsulon.Addons = {
     "crypto-trade",
@@ -16,6 +18,12 @@ Kapsulon.Addons = {
 function Kapsulon.kprint(text)
     print("[KAPSULON] "..text)
 end
+
+if Kapsulon.Loader.SelfUpdate then
+    Kapsulon.kprint("\nChecking if an update is available...")
+    
+end
+
 
 Kapsulon.kprint("\nStarting initialization sequence...\n")
 
